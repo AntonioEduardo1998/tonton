@@ -1,5 +1,5 @@
-import Home from "@src/screens/home";
+import { Routes } from '@routes/index';
 
 export default function App() {
-  return Home();
+  return Routes();
 }
