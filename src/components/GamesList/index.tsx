@@ -2,6 +2,7 @@ import GameItem from '@components/GameItem';
 import { useState } from 'react';
 import { ActivityIndicator, FlatList, Text } from 'react-native';
 import { useGetGamesQuery } from 'src/services/games-api';
+import { StyledFlatList } from '@components/GamesList/styles';
 
 export function GameList() {
   const [page, setPage] = useState(0);
@@ -20,7 +21,7 @@ export function GameList() {
   }
 
   return (
-    <FlatList
+    <StyledFlatList
       data={games}
       keyExtractor={(item) => item.dealID}
       renderItem={({ item }) => <GameItem game={item} />}
