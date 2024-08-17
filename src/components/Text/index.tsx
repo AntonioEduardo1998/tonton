@@ -5,6 +5,7 @@ type TextProps = {
   size?: number;
   color?: string;
   fontFamily?: string;
+  align?: 'auto' | 'left' | 'right' | 'center' | 'justify';
 };
 
 export function Text({ children, ...props }: TextProps) {
