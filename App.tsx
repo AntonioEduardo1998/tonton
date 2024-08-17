@@ -15,7 +15,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <StatusBar barStyle="light-content" backgroundColor="transparent" translucent />
+        <StatusBar barStyle="light-content" backgroundColor={theme.COLORS.PURPLE_500} translucent />
         {fontsLoaded ? <Routes /> : <ActivityIndicator />}
       </ThemeProvider>
     </Provider>

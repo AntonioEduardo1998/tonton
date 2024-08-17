@@ -23,16 +23,12 @@ export function Header({ showBackButton = false, showCartButton = false }: Props
     <Container>
       {showBackButton && (
         <BackButton onPress={navigateToHome}>
-          <FontAwesome name="arrow-left" size={theme.FONT_SIZE.XL} color={theme.COLORS.GRAY_700} />
+          <FontAwesome name="arrow-left" size={theme.FONT_SIZE.XL} color={theme.COLORS.WHITE} />
         </BackButton>
       )}
       {showCartButton && (
         <CartButton onPress={navigateToShoppingCart}>
-          <FontAwesome
-            name="shopping-cart"
-            size={theme.FONT_SIZE.XL}
-            color={theme.COLORS.GRAY_700}
-          />
+          <FontAwesome name="shopping-cart" size={theme.FONT_SIZE.XL} color={theme.COLORS.WHITE} />
         </CartButton>
       )}
     </Container>
