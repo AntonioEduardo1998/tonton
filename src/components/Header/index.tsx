@@ -1,14 +1,7 @@
-import {
-  BackButton,
-  CardButtonBadge,
-  CartButton,
-  Container,
-  Title,
-} from '@components/Header/styles';
+import { CartButton } from '@components/Header/components/CartButton';
+import { BackButton, Container, Title } from '@components/Header/styles';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import { selectCartHasItems } from '@store/slices/cart.slice';
-import { useSelector } from 'react-redux';
 import theme from 'src/theme';
 
 type Props = {
@@ -19,8 +12,6 @@ type Props = {
 
 export function Header({ showBackButton = false, showCartButton = false, children }: Props) {
   const navigation = useNavigation();
-
-  const hasItemsInCart = useSelector(selectCartHasItems);
 
   function navigateToHome() {
     navigation.navigate('Home');
@@ -38,16 +29,7 @@ export function Header({ showBackButton = false, showCartButton = false, childre
         </BackButton>
       )}
       {children}
-      {showCartButton && (
-        <CartButton onPress={navigateToShoppingCart}>
-          {hasItemsInCart && <CardButtonBadge />}
-          <MaterialIcons
-            name="shopping-cart-checkout"
-            size={theme.FONT_SIZE.XL}
-            color={theme.COLORS.WHITE}
-          />
-        </CartButton>
-      )}
+      {showCartButton && <CartButton onPress={navigateToShoppingCart} />}
     </Container>
   );
 }
