@@ -1,15 +1,5 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
-  flex: 1;
-  background-color: ${({ theme }) => theme.COLORS.PURPLE_300};
-  margin-top: 10px;
-  flex-direction: column;
-  border-radius: 8px;
-  gap: 16px;
-  padding: 16px;
-`;
-
 export const GameContent = styled.View`
   flex-direction: row;
   gap: 16px;

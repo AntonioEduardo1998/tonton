@@ -1,7 +1,7 @@
+import { Card } from '@components/Card';
 import {
   CartActionButton,
   CartActionButtonText,
-  Container,
   GameBanner,
   GameContent,
   GamePrice,
@@ -33,7 +33,7 @@ const GameItem: React.FC<GameItemProps> = React.memo(({ game }) => {
   const gameIsInCart = useSelector(selectIsInCart(game.dealID));
 
   return (
-    <Container>
+    <Card>
       <GameContent>
         <GameBanner source={{ uri: game.thumb }} />
         <View>
@@ -52,7 +52,7 @@ const GameItem: React.FC<GameItemProps> = React.memo(({ game }) => {
           {!gameIsInCart ? 'Adicionar ao carrinho' : 'Remover do carrinho'}
         </CartActionButtonText>
       </CartActionButton>
-    </Container>
+    </Card>
   );
 });
 
