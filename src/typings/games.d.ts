@@ -1,7 +1,7 @@
 export interface Game {
   dealID: string;
   title: string;
-  salePrice: number;
+  salePrice: string;
   thumb: string;
 }
 
