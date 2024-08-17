@@ -1,15 +1,26 @@
-import { BackButton, CartButton, Container } from '@components/Header/styles';
-import { FontAwesome } from '@expo/vector-icons';
+import {
+  BackButton,
+  CardButtonBadge,
+  CartButton,
+  Container,
+  Title,
+} from '@components/Header/styles';
+import { MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import { selectCartHasItems } from '@store/slices/cart.slice';
+import { useSelector } from 'react-redux';
 import theme from 'src/theme';
 
 type Props = {
   showBackButton?: boolean;
   showCartButton?: boolean;
+  children?: React.ReactNode;
 };
 
-export function Header({ showBackButton = false, showCartButton = false }: Props) {
+export function Header({ showBackButton = false, showCartButton = false, children }: Props) {
   const navigation = useNavigation();
+
+  const hasItemsInCart = useSelector(selectCartHasItems);
 
   function navigateToHome() {
     navigation.navigate('Home');
@@ -23,14 +34,26 @@ export function Header({ showBackButton = false, showCartButton = false }: Props
     <Container>
       {showBackButton && (
         <BackButton onPress={navigateToHome}>
-          <FontAwesome name="arrow-left" size={theme.FONT_SIZE.XL} color={theme.COLORS.WHITE} />
+          <MaterialIcons name="arrow-back" size={theme.FONT_SIZE.XL} color={theme.COLORS.WHITE} />
         </BackButton>
       )}
+      {children}
       {showCartButton && (
         <CartButton onPress={navigateToShoppingCart}>
-          <FontAwesome name="shopping-cart" size={theme.FONT_SIZE.XL} color={theme.COLORS.WHITE} />
+          {hasItemsInCart && <CardButtonBadge />}
+          <MaterialIcons
+            name="shopping-cart-checkout"
+            size={theme.FONT_SIZE.XL}
+            color={theme.COLORS.WHITE}
+          />
         </CartButton>
       )}
     </Container>
   );
 }
+
+const HeaderTitle = ({ children }: { children: React.ReactNode }) => {
+  return <Title>{children}</Title>;
+};
+HeaderTitle.displayName = 'Header.Title';
+Header.Title = HeaderTitle;
