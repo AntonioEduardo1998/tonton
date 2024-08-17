@@ -6,16 +6,6 @@ export const Container = styled(SafeAreaView)`
   background-color: ${(props) => props.theme.COLORS.PURPLE_500};
 `;
 
-export const ClearCartButton = styled.TouchableOpacity`
-  border-radius: 8px;
-  padding: 4px 8px;
-  margin-left: auto;
-  margin-right: 16px;
-  background-color: ${({ theme }) => theme.COLORS.WHITE};
-  flex-direction: row;
-  gap: 8px;
-`;
-
 export const ClearCartButtonText = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE.SM}px;
   font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
