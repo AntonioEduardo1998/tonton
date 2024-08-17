@@ -60,4 +60,8 @@ export const selectTotalCost = (state: { cart: CartState }) => {
   return state.cart.items.reduce((acc, item) => acc + Number(item.salePrice) * item.quantity, 0);
 };
 
+export const selectTotalItemsInCart = (state: { cart: CartState }) => {
+  return state.cart.items.reduce((acc, item) => acc + item.quantity, 0);
+};
+
 export default cartSlice.reducer;
