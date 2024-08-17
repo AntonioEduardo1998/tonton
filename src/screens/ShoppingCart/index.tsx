@@ -9,6 +9,7 @@ import { FlatList } from 'react-native';
 import { useSelector } from 'react-redux';
 import theme from 'src/theme';
 import { ClearCartButton } from '@screens/ShoppingCart/components/ClearCartButton';
+import { EmptyCart } from '@screens/ShoppingCart/components/EmptyCart';
 
 export function ShoppingCart() {
   const cartItems = useSelector((state: RootState) => state.cart.items);
@@ -21,6 +22,7 @@ export function ShoppingCart() {
         <Header.Title>carrinho</Header.Title>
       </Header>
       {hasItems && <ClearCartButton />}
+      {!hasItems && <EmptyCart />}
       <FlatList
         data={cartItems}
         keyExtractor={(item) => item.dealID}
