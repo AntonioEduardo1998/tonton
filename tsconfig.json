@@ -8,6 +8,8 @@
       "@screens/*": ["./src/screens/*"],
       "@components/*": ["./src/components/*"],
       "@routes/*": ["./src/routes/*"],
+      "@store/*": ["src/store/*"],
+      "@typings/*": ["./src/typings/*"],
     }
   }
 }
