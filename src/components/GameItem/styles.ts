@@ -4,10 +4,15 @@ export const Container = styled.View`
   flex: 1;
   background-color: ${({ theme }) => theme.COLORS.PURPLE_300};
   margin-top: 10px;
-  flex-direction: row;
+  flex-direction: column;
   border-radius: 8px;
   gap: 16px;
   padding: 16px;
+`;
+
+export const GameContent = styled.View`
+  flex-direction: row;
+  gap: 16px;
 `;
 
 export const GameTitle = styled.Text`
@@ -26,4 +31,17 @@ export const GameBanner = styled.Image`
   width: 120px;
   height: 45px;
   flex-direction: row;
+`;
+
+export const CartActionButton = styled.TouchableOpacity`
+  background-color: ${({ theme }) => theme.COLORS.PURPLE_500};
+  padding: 8px 16px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 8px;
+`;
+
+export const CartActionButtonText = styled(GameTitle)`
+  font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
 `;
