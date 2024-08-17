@@ -4,16 +4,16 @@ import {
   CartActionButtonText,
   GameBanner,
   GameContent,
-  GamePrice,
-  GameTitle,
 } from '@components/GameItem/styles';
 import { MaterialIcons } from '@expo/vector-icons';
 import { addItemToCart, removeItemFromCart, selectIsInCart } from '@store/slices/cart.slice';
 import { Game } from '@typings/games';
+import { showToast } from '@utils/showToast';
 import React from 'react';
 import { View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import theme from 'src/theme';
+import { Text } from '@components/Text';
 
 interface GameItemProps {
   game: Game;
@@ -24,10 +24,12 @@ const GameItem: React.FC<GameItemProps> = React.memo(({ game }) => {
 
   const addToCart = (game: Game) => {
     dispatch(addItemToCart(game));
+    showToast('adicionado ao carrinho');
   };
 
   const removeFromCart = (dealId: string) => {
     dispatch(removeItemFromCart(dealId));
+    showToast('removido do carrinho');
   };
 
   const gameIsInCart = useSelector(selectIsInCart(game.dealID));
@@ -37,8 +39,8 @@ const GameItem: React.FC<GameItemProps> = React.memo(({ game }) => {
       <GameContent>
         <GameBanner source={{ uri: game.thumb }} />
         <View>
-          <GameTitle>{game.title}</GameTitle>
-          <GamePrice>R$ {game.salePrice}</GamePrice>
+          <Text>{game.title}</Text>
+          <Text>R$ {game.salePrice}</Text>
         </View>
       </GameContent>
       <CartActionButton

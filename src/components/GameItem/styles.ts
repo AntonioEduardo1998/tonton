@@ -1,7 +1,6 @@
 import styled from 'styled-components/native';
 
 export const GameContent = styled.View`
-  flex-direction: row;
   gap: 16px;
 `;
 
