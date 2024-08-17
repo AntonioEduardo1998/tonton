@@ -1,5 +1,7 @@
+import { Card } from '@components/Card';
 import { Header } from '@components/Header';
 import { MaterialIcons } from '@expo/vector-icons';
+import { CartItemComponent } from '@screens/ShoppingCart/components/CartItem';
 import {
   ClearCartButton,
   ClearCartButtonText,
@@ -8,10 +10,10 @@ import {
 } from '@screens/ShoppingCart/styles';
 import { clearCart, selectTotalCost } from '@store/slices/cart.slice';
 import { RootState } from '@store/store';
-import { CartItem } from '@typings/cart';
-import { FlatList, Text, View } from 'react-native';
+import { FlatList } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import theme from 'src/theme';
+import { Text } from '@components/Text';
 
 export function ShoppingCart() {
   const dispatch = useDispatch();
@@ -22,13 +24,6 @@ export function ShoppingCart() {
     dispatch(clearCart());
   };
 
-  const renderItem = ({ item }: { item: CartItem }) => (
-    <View>
-      <Text>{item.title}</Text>
-      <Text>Quantidade: {item.quantity}</Text>
-    </View>
-  );
-
   return (
     <Container>
       <Header showBackButton>
@@ -38,9 +33,17 @@ export function ShoppingCart() {
         <MaterialIcons name="delete" size={theme.FONT_SIZE.LG} color={theme.COLORS.RED} />
         <ClearCartButtonText>Remover todos</ClearCartButtonText>
       </ClearCartButton>
-      <FlatList data={cartItems} keyExtractor={(item) => item.dealID} renderItem={renderItem} />
+      <FlatList
+        data={cartItems}
+        keyExtractor={(item) => item.dealID}
+        renderItem={({ item }) => (
+          <Card>
+            <CartItemComponent game={item} />
+          </Card>
+        )}
+      />
       <Footer>
-        <Text>Total: R$ {totalCost}</Text>
+        <Text color={theme.COLORS.PURPLE_900}>Total: R$ {totalCost.toFixed(2)}</Text>
       </Footer>
     </Container>
   );
