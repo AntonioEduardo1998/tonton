@@ -11,7 +11,7 @@ export const mockGames: Game[] = [
   {
     title: 'Deaths Gambit: Afterlife',
     dealID: 'g%2BR6TY6gM6zKeGEEs%2BB6OpIKYeECLmZZiSgux2sK9%2BE%3D',
-    salePrice: '0.00',
+    salePrice: '50.89',
     thumb:
       'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/356650/capsule_sm_120.jpg?t=1669922537',
   },
