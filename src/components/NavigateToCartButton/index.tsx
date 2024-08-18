@@ -1,20 +1,23 @@
-import { Container, Badge } from '@components/Header/components/CartButton/styles';
-import { MaterialIcons } from '@expo/vector-icons';
+import { Badge, Container } from '@components/NavigateToCartButton/styles';
 import { Text } from '@components/Text';
-import theme from '@theme/index';
-import { useSelector } from 'react-redux';
+import { MaterialIcons } from '@expo/vector-icons';
+import { useNavigation } from '@hooks/useNavigation';
 import {
   selectCartHasItems,
   selectTotalItemsInCart,
 } from '@modules/ShoppingCart/state/selectors/cart.selectors';
+import theme from '@theme/index';
+import { useSelector } from 'react-redux';
 
-export function CartButton({ onPress }: { onPress: () => void }) {
+export function NavigateToCartButton() {
   const hasItemsInCart = useSelector(selectCartHasItems);
 
   const totalItemsInCart = useSelector(selectTotalItemsInCart);
 
+  const { navigateToHome } = useNavigation();
+
   return (
-    <Container onPress={onPress}>
+    <Container onPress={navigateToHome}>
       {hasItemsInCart && (
         <Badge>
           <Text size={theme.FONT_SIZE.XSM}>{totalItemsInCart}</Text>

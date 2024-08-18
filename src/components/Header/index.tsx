@@ -1,4 +1,4 @@
-import { CartButton } from '@components/Header/components/CartButton';
+import { NavigateToCartButton } from '@components/NavigateToCartButton';
 import { BackButton, Container, Title } from '@components/Header/styles';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@hooks/useNavigation';
@@ -11,7 +11,7 @@ type Props = {
 };
 
 export function Header({ showBackButton = false, showCartButton = false, children }: Props) {
-  const { navigateToHome, navigateToShoppingCart } = useNavigation();
+  const { navigateToHome } = useNavigation();
 
   return (
     <Container>
@@ -21,7 +21,7 @@ export function Header({ showBackButton = false, showCartButton = false, childre
         </BackButton>
       )}
       {children}
-      {showCartButton && <CartButton onPress={navigateToShoppingCart} />}
+      {showCartButton && <NavigateToCartButton />}
     </Container>
   );
 }
