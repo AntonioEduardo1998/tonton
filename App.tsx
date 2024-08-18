@@ -5,6 +5,7 @@ import { useFonts, Roboto_400Regular, Roboto_700Bold } from '@expo-google-fonts/
 import { ActivityIndicator, StatusBar } from 'react-native';
 import { Provider } from 'react-redux';
 import { store } from '@store/store';
+import Toast from 'react-native-toast-message';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -18,6 +19,7 @@ export default function App() {
         <StatusBar barStyle="light-content" backgroundColor={theme.COLORS.PURPLE_500} translucent />
         {fontsLoaded ? <Routes /> : <ActivityIndicator />}
       </ThemeProvider>
+      <Toast />
     </Provider>
   );
 }
