@@ -1,6 +1,6 @@
 import { CartState } from '@modules/ShoppingCart/typings/shopping-cart';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Game } from '@typings/games';
+import { Product } from '@modules/Products/typings/products';
 
 const initialState: CartState = {
   items: [],
@@ -11,7 +11,7 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addItemToCart(state, action: PayloadAction<Game>) {
+    addItemToCart(state, action: PayloadAction<Product>) {
       const item = state.items.find((i) => i.dealID === action.payload.dealID);
       if (item) {
         item.quantity += 1;

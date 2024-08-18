@@ -8,7 +8,7 @@ export function EmptyCart() {
   const navigation = useNavigation();
 
   function navigateToHome() {
-    navigation.navigate('Home');
+    navigation.navigate('ProductList');
   }
 
   return (

@@ -1,16 +1,16 @@
 import styled from 'styled-components/native';
 
-export const GameContent = styled.View`
+export const ProductContent = styled.View`
   flex-direction: column;
   align-items: center;
   gap: 16px;
 `;
 
-export const GameInfo = styled.View`
+export const ProductInfo = styled.View`
   padding-left: 16px;
 `;
 
-export const GameBanner = styled.Image`
+export const ProductBanner = styled.Image`
   width: 100%;
   height: 100px;
   border-radius: 4px;

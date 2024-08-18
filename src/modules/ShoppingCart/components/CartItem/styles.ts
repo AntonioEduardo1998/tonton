@@ -1,4 +1,3 @@
-import { Text } from '@components/Text';
 import { TouchableOpacityProps } from 'react-native';
 import styled from 'styled-components/native';
 
@@ -28,7 +27,7 @@ export const ActionsView = styled.View`
   gap: 8px;
 `;
 
-export const GameTitle = styled(Text)`
+export const ProductTitle = styled.Text`
   max-width: 100%;
 `;
 

@@ -14,7 +14,7 @@ export function Header({ showBackButton = false, showCartButton = false, childre
   const navigation = useNavigation();
 
   function navigateToHome() {
-    navigation.navigate('Home');
+    navigation.navigate('ProductList');
   }
 
   function navigateToShoppingCart() {

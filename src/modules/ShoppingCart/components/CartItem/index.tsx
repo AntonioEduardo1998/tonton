@@ -5,7 +5,7 @@ import {
   ActionsView,
   CartItemInfo,
   Container,
-  GameTitle,
+  ProductTitle,
 } from '@modules/ShoppingCart/components/CartItem/styles';
 import {
   decrementItemQuantity,
@@ -19,33 +19,33 @@ import { useDispatch } from 'react-redux';
 import theme from 'src/theme';
 
 type CartItemProps = {
-  game: ShoppingCartItem;
+  product: ShoppingCartItem;
 };
 
-export function CartItem({ game }: CartItemProps) {
+export function CartItem({ product }: CartItemProps) {
   const dispatch = useDispatch();
-  const disableDecrement = useMemo(() => game.quantity <= 1, [game.quantity]);
+  const disableDecrement = useMemo(() => product.quantity <= 1, [product.quantity]);
 
   function incrementQuantity() {
-    dispatch(incrementItemQuantity(game.dealID));
+    dispatch(incrementItemQuantity(product.dealID));
   }
 
   function decrementQuantity() {
-    dispatch(decrementItemQuantity(game.dealID));
+    dispatch(decrementItemQuantity(product.dealID));
   }
 
   function removeItem() {
-    dispatch(removeItemFromCart(game.dealID));
+    dispatch(removeItemFromCart(product.dealID));
   }
 
   return (
     <Container>
       <CartItemInfo>
-        <GameTitle numberOfLines={1} ellipsizeMode="tail">
-          {game.title}
-        </GameTitle>
+        <ProductTitle numberOfLines={1} ellipsizeMode="tail">
+          {product.title}
+        </ProductTitle>
         <Text color={theme.COLORS.GRAY_200} size={theme.FONT_SIZE.SM}>
-          Preço: R$ {game.salePrice}
+          Preço: R$ {product.salePrice}
         </Text>
       </CartItemInfo>
       <ActionsView>
@@ -56,7 +56,7 @@ export function CartItem({ game }: CartItemProps) {
             color={theme.COLORS.WHITE}
           />
         </ActionButton>
-        <Text size={theme.FONT_SIZE.LG}>{game.quantity}</Text>
+        <Text size={theme.FONT_SIZE.LG}>{product.quantity}</Text>
         <ActionButton onPress={incrementQuantity}>
           <MaterialIcons
             name="keyboard-arrow-right"

@@ -1,6 +1,6 @@
-import { Game } from '@typings/games';
+import { Product } from '@modules/Products/typings/products';
 
-export interface ShoppingCartItem extends Game {
+export interface ShoppingCartItem extends Product {
   quantity: number;
 }
 
