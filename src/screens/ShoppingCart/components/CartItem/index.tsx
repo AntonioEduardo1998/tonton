@@ -3,12 +3,18 @@ import { MaterialIcons } from '@expo/vector-icons';
 import {
   ActionButton,
   ActionsView,
+  CartItemInfo,
   Container,
-  ItemInfoContainer,
+  GameTitle,
 } from '@screens/ShoppingCart/components/CartItem/styles';
-import { decrementItemQuantity, incrementItemQuantity } from '@store/slices/cart.slice';
+import {
+  decrementItemQuantity,
+  incrementItemQuantity,
+  removeItemFromCart,
+} from '@store/slices/cart.slice';
 import { CartItem } from '@typings/cart';
 import { useMemo } from 'react';
+import { TouchableOpacity } from 'react-native';
 import { useDispatch } from 'react-redux';
 import theme from 'src/theme';
 
@@ -28,12 +34,20 @@ export function CartItemComponent({ game }: CartItemProps) {
     dispatch(decrementItemQuantity(game.dealID));
   }
 
+  function removeItem() {
+    dispatch(removeItemFromCart(game.dealID));
+  }
+
   return (
     <Container>
-      <ItemInfoContainer>
-        <Text>{game.title}</Text>
-        <Text>Preço: R$ {game.salePrice}</Text>
-      </ItemInfoContainer>
+      <CartItemInfo>
+        <GameTitle numberOfLines={1} ellipsizeMode="tail">
+          {game.title}
+        </GameTitle>
+        <Text color={theme.COLORS.GRAY_200} size={theme.FONT_SIZE.SM}>
+          Preço: R$ {game.salePrice}
+        </Text>
+      </CartItemInfo>
       <ActionsView>
         <ActionButton onPress={decrementQuantity} disabled={disableDecrement}>
           <MaterialIcons
@@ -51,6 +65,9 @@ export function CartItemComponent({ game }: CartItemProps) {
           />
         </ActionButton>
       </ActionsView>
+      <TouchableOpacity onPress={removeItem}>
+        <MaterialIcons name="delete" size={theme.FONT_SIZE.XL} color={theme.COLORS.RED} />
+      </TouchableOpacity>
     </Container>
   );
 }

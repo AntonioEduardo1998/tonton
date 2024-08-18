@@ -1,4 +1,5 @@
-import { TouchableOpacity, TouchableOpacityProps } from 'react-native';
+import { Text } from '@components/Text';
+import { TouchableOpacityProps } from 'react-native';
 import styled from 'styled-components/native';
 
 interface ButtonProps extends TouchableOpacityProps {
@@ -6,22 +7,32 @@ interface ButtonProps extends TouchableOpacityProps {
 }
 
 export const Container = styled.View`
+  background-color: ${({ theme }) => theme.COLORS.PURPLE_300};
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  margin: 8px;
+  gap: 16px;
+  border-radius: 8px;
 `;
 
-export const ItemInfoContainer = styled.View`
+export const CartItemInfo = styled.View`
+  flex: 1;
   gap: 8px;
 `;
 
 export const ActionsView = styled.View`
   flex-direction: row;
   align-items: center;
-  gap: 16px;
+  gap: 8px;
 `;
 
-export const ActionButton = styled(TouchableOpacity)<ButtonProps>`
+export const GameTitle = styled(Text)`
+  max-width: 100%;
+`;
+
+export const ActionButton = styled.TouchableOpacity<ButtonProps>`
   padding: 8px;
   opacity: ${(props) => (props.disabled ? 0.3 : 1)};
 `;
