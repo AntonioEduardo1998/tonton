@@ -18,7 +18,7 @@ export function Header({ showBackButton = false, showCartButton = false, childre
   }
 
   function navigateToShoppingCart() {
-    navigation.navigate('ShoppingCart');
+    navigation.navigate('ShoppingCartList');
   }
 
   return (

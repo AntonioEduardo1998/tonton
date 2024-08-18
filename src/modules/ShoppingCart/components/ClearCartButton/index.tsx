@@ -1,7 +1,7 @@
 import { Text } from '@components/Text';
 import { MaterialIcons } from '@expo/vector-icons';
-import { Container } from '@screens/ShoppingCart/components/ClearCartButton/styles';
-import { clearCart } from '@store/slices/cart.slice';
+import { Container } from '@modules/ShoppingCart/components/ClearCartButton/styles';
+import { clearCart } from '@modules/ShoppingCart/state/slices/cart.slice';
 import { showToast } from '@utils/showToast';
 import { Alert } from 'react-native';
 import { useDispatch } from 'react-redux';

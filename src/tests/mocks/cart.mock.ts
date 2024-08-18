@@ -1,6 +1,6 @@
-import { CartItem } from '@typings/cart';
+import { ShoppingCartItem } from '@typings/cart';
 
-export const mockCart: CartItem[] = [
+export const mockCart: ShoppingCartItem[] = [
   {
     title: 'Atlas Fallen Reign Of Sand',
     quantity: 1,

@@ -3,7 +3,10 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { Text } from '@components/Text';
 import theme from 'src/theme';
 import { useSelector } from 'react-redux';
-import { selectCartHasItems, selectTotalItemsInCart } from '@store/slices/cart.slice';
+import {
+  selectCartHasItems,
+  selectTotalItemsInCart,
+} from '@modules/ShoppingCart/state/slices/cart.slice';
 
 export function CartButton({ onPress }: { onPress: () => void }) {
   const hasItemsInCart = useSelector(selectCartHasItems);

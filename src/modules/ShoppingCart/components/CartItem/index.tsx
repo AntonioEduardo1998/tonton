@@ -6,23 +6,23 @@ import {
   CartItemInfo,
   Container,
   GameTitle,
-} from '@screens/ShoppingCart/components/CartItem/styles';
+} from '@modules/ShoppingCart/components/CartItem/styles';
 import {
   decrementItemQuantity,
   incrementItemQuantity,
   removeItemFromCart,
-} from '@store/slices/cart.slice';
-import { CartItem } from '@typings/cart';
+} from '@modules/ShoppingCart/state/slices/cart.slice';
+import { ShoppingCartItem } from '@modules/ShoppingCart/typings/shopping-cart';
 import { useMemo } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { useDispatch } from 'react-redux';
 import theme from 'src/theme';
 
 type CartItemProps = {
-  game: CartItem;
+  game: ShoppingCartItem;
 };
 
-export function CartItemComponent({ game }: CartItemProps) {
+export function CartItem({ game }: CartItemProps) {
   const dispatch = useDispatch();
   const disableDecrement = useMemo(() => game.quantity <= 1, [game.quantity]);
 

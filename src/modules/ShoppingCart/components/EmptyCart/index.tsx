@@ -1,7 +1,7 @@
 import { Text } from '@components/Text';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import { Container, KeepShoppingButton } from '@screens/ShoppingCart/components/EmptyCart/styles';
+import { Container, KeepShoppingButton } from '@modules/ShoppingCart/components/EmptyCart/styles';
 import theme from 'src/theme';
 
 export function EmptyCart() {

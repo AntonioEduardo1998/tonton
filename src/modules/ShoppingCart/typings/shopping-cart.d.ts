@@ -1,10 +1,10 @@
 import { Game } from '@typings/games';
 
-export interface CartItem extends Game {
+export interface ShoppingCartItem extends Game {
   quantity: number;
 }
 
 export interface CartState {
-  items: CartItem[];
+  items: ShoppingCartItem[];
   hasItems: boolean;
 }

@@ -2,7 +2,7 @@ import GameItem from '@components/GameItem';
 import { Game } from '@typings/games';
 import { useEffect, useState } from 'react';
 import { ActivityIndicator, FlatList, Text } from 'react-native';
-import { useGetGamesQuery } from 'src/services/games-api';
+import { useGetGamesQuery } from 'src/services/gamesApi';
 
 export function GameList() {
   const [page, setPage] = useState(0);

@@ -2,7 +2,11 @@ import { Card } from '@components/Card';
 import { CartActionButton, GameBanner, GameContent, GameInfo } from '@components/GameItem/styles';
 import { Text } from '@components/Text';
 import { MaterialIcons } from '@expo/vector-icons';
-import { addItemToCart, removeItemFromCart, selectIsInCart } from '@store/slices/cart.slice';
+import {
+  addItemToCart,
+  removeItemFromCart,
+  selectIsInCart,
+} from '@modules/ShoppingCart/state/slices/cart.slice';
 import { Game } from '@typings/games';
 import { showToast } from '@utils/showToast';
 import React from 'react';

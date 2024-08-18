@@ -1,17 +1,16 @@
-import { Card } from '@components/Card';
 import { Header } from '@components/Header';
 import { Text } from '@components/Text';
-import { CartItemComponent } from '@screens/ShoppingCart/components/CartItem';
-import { Container, Footer } from '@screens/ShoppingCart/styles';
-import { selectCartHasItems, selectTotalCost } from '@store/slices/cart.slice';
+import { CartItem } from '@modules/ShoppingCart/components/CartItem/';
+import { ClearCartButton } from '@modules/ShoppingCart/components/ClearCartButton';
+import { EmptyCart } from '@modules/ShoppingCart/components/EmptyCart';
+import { Container, Footer } from '@modules/ShoppingCart/screens/ShoppingCartList/styles';
+import { selectCartHasItems, selectTotalCost } from '@modules/ShoppingCart/state/slices/cart.slice';
 import { RootState } from '@store/store';
 import { FlatList } from 'react-native';
 import { useSelector } from 'react-redux';
 import theme from 'src/theme';
-import { ClearCartButton } from '@screens/ShoppingCart/components/ClearCartButton';
-import { EmptyCart } from '@screens/ShoppingCart/components/EmptyCart';
 
-export function ShoppingCart() {
+export function ShoppingCartList() {
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const totalCost = useSelector(selectTotalCost);
   const hasItems = useSelector(selectCartHasItems);
@@ -26,7 +25,7 @@ export function ShoppingCart() {
       <FlatList
         data={cartItems}
         keyExtractor={(item) => item.dealID}
-        renderItem={({ item }) => <CartItemComponent game={item} />}
+        renderItem={({ item }) => <CartItem game={item} />}
       />
       <Footer>
         <Text color={theme.COLORS.PURPLE_900}>Total: R$ {totalCost.toFixed(2)}</Text>

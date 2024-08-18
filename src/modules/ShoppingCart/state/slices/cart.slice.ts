@@ -1,5 +1,5 @@
+import { CartState } from '@modules/ShoppingCart/typings/shopping-cart';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { CartState } from '@typings/cart';
 import { Game } from '@typings/games';
 
 const initialState: CartState = {
