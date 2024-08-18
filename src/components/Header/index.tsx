@@ -1,7 +1,7 @@
 import { CartButton } from '@components/Header/components/CartButton';
 import { BackButton, Container, Title } from '@components/Header/styles';
 import { MaterialIcons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@hooks/useNavigation';
 import theme from 'src/theme';
 
 type Props = {
@@ -11,15 +11,7 @@ type Props = {
 };
 
 export function Header({ showBackButton = false, showCartButton = false, children }: Props) {
-  const navigation = useNavigation();
-
-  function navigateToHome() {
-    navigation.navigate('ProductList');
-  }
-
-  function navigateToShoppingCart() {
-    navigation.navigate('ShoppingCartList');
-  }
+  const { navigateToHome, navigateToShoppingCart } = useNavigation();
 
   return (
     <Container>

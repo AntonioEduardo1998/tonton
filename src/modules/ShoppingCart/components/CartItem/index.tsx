@@ -7,15 +7,9 @@ import {
   Container,
   ProductTitle,
 } from '@modules/ShoppingCart/components/CartItem/styles';
-import {
-  decrementItemQuantity,
-  incrementItemQuantity,
-  removeItemFromCart,
-} from '@modules/ShoppingCart/state/slices/cart.slice';
+import { useCartItem } from '@modules/ShoppingCart/hooks/useCartItem';
 import { ShoppingCartItem } from '@modules/ShoppingCart/typings/shopping-cart';
-import { useMemo } from 'react';
 import { TouchableOpacity } from 'react-native';
-import { useDispatch } from 'react-redux';
 import theme from 'src/theme';
 
 type CartItemProps = {
@@ -23,20 +17,8 @@ type CartItemProps = {
 };
 
 export function CartItem({ product }: CartItemProps) {
-  const dispatch = useDispatch();
-  const disableDecrement = useMemo(() => product.quantity <= 1, [product.quantity]);
-
-  function incrementQuantity() {
-    dispatch(incrementItemQuantity(product.dealID));
-  }
-
-  function decrementQuantity() {
-    dispatch(decrementItemQuantity(product.dealID));
-  }
-
-  function removeItem() {
-    dispatch(removeItemFromCart(product.dealID));
-  }
+  const { disableDecrement, decrementQuantity, incrementQuantity, removeItem } =
+    useCartItem(product);
 
   return (
     <Container>

@@ -1,15 +1,11 @@
 import { Text } from '@components/Text';
 import { MaterialIcons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
 import { Container, KeepShoppingButton } from '@modules/ShoppingCart/components/EmptyCart/styles';
+import { useNavigation } from '@hooks/useNavigation';
 import theme from 'src/theme';
 
 export function EmptyCart() {
-  const navigation = useNavigation();
-
-  function navigateToHome() {
-    navigation.navigate('ProductList');
-  }
+  const { navigateToHome } = useNavigation();
 
   return (
     <Container>
