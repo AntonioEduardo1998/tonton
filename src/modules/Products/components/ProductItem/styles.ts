@@ -2,12 +2,7 @@ import styled from 'styled-components/native';
 
 export const ProductContent = styled.View`
   flex-direction: column;
-  align-items: center;
   gap: 16px;
-`;
-
-export const ProductInfo = styled.View`
-  padding-left: 16px;
 `;
 
 export const ProductBanner = styled.Image`

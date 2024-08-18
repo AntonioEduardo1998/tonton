@@ -5,12 +5,12 @@ import {
   CartActionButton,
   ProductBanner,
   ProductContent,
-  ProductInfo,
 } from '@modules/Products/components/ProductItem/styles';
 import { Product } from '@modules/Products/typings/products';
 import { useCart } from '@modules/ShoppingCart/hooks/useCart';
 import { selectIsInCart } from '@modules/ShoppingCart/state/selectors/cart.selectors';
 import React from 'react';
+import { View } from 'react-native';
 import { useSelector } from 'react-redux';
 import theme from 'src/theme';
 
@@ -26,10 +26,12 @@ const ProductItem: React.FC<ProductItemProps> = React.memo(({ product }) => {
     <Card>
       <ProductContent>
         <ProductBanner source={{ uri: product.thumb }} />
-        <ProductInfo>
-          <Text numberOfLines={1}>{product.title}</Text>
+        <View>
+          <Text align="left" numberOfLines={1}>
+            {product.title}
+          </Text>
           <Text>R$ {product.salePrice}</Text>
-        </ProductInfo>
+        </View>
       </ProductContent>
       <CartActionButton
         onPress={() => (productIsInCart ? removeToCart(product.dealID) : addToCart(product))}>
