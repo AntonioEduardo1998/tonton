@@ -14,10 +14,10 @@ export function NavigateToCartButton() {
 
   const totalItemsInCart = useSelector(selectTotalItemsInCart);
 
-  const { navigateToHome } = useNavigation();
+  const { navigateToShoppingCart } = useNavigation();
 
   return (
-    <Container onPress={navigateToHome}>
+    <Container onPress={navigateToShoppingCart}>
       {hasItemsInCart && (
         <Badge>
           <Text size={theme.FONT_SIZE.XSM}>{totalItemsInCart}</Text>
