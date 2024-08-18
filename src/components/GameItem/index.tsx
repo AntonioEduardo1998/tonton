@@ -1,19 +1,13 @@
 import { Card } from '@components/Card';
-import {
-  CartActionButton,
-  CartActionButtonText,
-  GameBanner,
-  GameContent,
-} from '@components/GameItem/styles';
+import { CartActionButton, GameBanner, GameContent, GameInfo } from '@components/GameItem/styles';
+import { Text } from '@components/Text';
 import { MaterialIcons } from '@expo/vector-icons';
 import { addItemToCart, removeItemFromCart, selectIsInCart } from '@store/slices/cart.slice';
 import { Game } from '@typings/games';
 import { showToast } from '@utils/showToast';
 import React from 'react';
-import { View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import theme from 'src/theme';
-import { Text } from '@components/Text';
 
 interface GameItemProps {
   game: Game;
@@ -38,10 +32,10 @@ const GameItem: React.FC<GameItemProps> = React.memo(({ game }) => {
     <Card>
       <GameContent>
         <GameBanner source={{ uri: game.thumb }} />
-        <View>
-          <Text>{game.title}</Text>
+        <GameInfo>
+          <Text numberOfLines={1}>{game.title}</Text>
           <Text>R$ {game.salePrice}</Text>
-        </View>
+        </GameInfo>
       </GameContent>
       <CartActionButton
         onPress={() => (gameIsInCart ? removeFromCart(game.dealID) : addToCart(game))}>
@@ -50,9 +44,7 @@ const GameItem: React.FC<GameItemProps> = React.memo(({ game }) => {
           size={theme.FONT_SIZE.XL}
           color={theme.COLORS.WHITE}
         />
-        <CartActionButtonText>
-          {!gameIsInCart ? 'Adicionar ao carrinho' : 'Remover do carrinho'}
-        </CartActionButtonText>
+        <Text>{!gameIsInCart ? 'Comprar' : 'Remover'}</Text>
       </CartActionButton>
     </Card>
   );

@@ -1,25 +1,19 @@
 import styled from 'styled-components/native';
 
 export const GameContent = styled.View`
+  flex-direction: column;
+  align-items: center;
   gap: 16px;
 `;
 
-export const GameTitle = styled.Text`
-  font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
-  font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
-  color: ${({ theme }) => theme.COLORS.WHITE};
-`;
-
-export const GamePrice = styled.Text`
-  font-size: ${({ theme }) => theme.FONT_SIZE.SM}px;
-  font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
-  color: ${({ theme }) => theme.COLORS.WHITE};
+export const GameInfo = styled.View`
+  padding-left: 16px;
 `;
 
 export const GameBanner = styled.Image`
-  width: 120px;
-  height: 45px;
-  flex-direction: row;
+  width: 100%;
+  height: 100px;
+  border-radius: 4px;
 `;
 
 export const CartActionButton = styled.TouchableOpacity`
@@ -29,8 +23,4 @@ export const CartActionButton = styled.TouchableOpacity`
   align-items: center;
   justify-content: space-between;
   border-radius: 8px;
-`;
-
-export const CartActionButtonText = styled(GameTitle)`
-  font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
 `;
