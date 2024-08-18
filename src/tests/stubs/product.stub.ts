@@ -6,3 +6,8 @@ export const productStub: Product = {
   salePrice: '100',
   thumb: 'some-url',
 };
+
+export const buildProduct = (overrides: Partial<Product> = {}): Product => ({
+  ...productStub,
+  ...overrides,
+});

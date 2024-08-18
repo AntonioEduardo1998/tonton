@@ -1,28 +1,12 @@
 import { Header } from '@components/Header';
 import { Text } from '@components/Text';
 import ProductItem from '@modules/Products/components/ProductItem';
+import { useProductList } from '@modules/Products/hooks/useProductList';
 import { Container } from '@modules/Products/screens/ProductList/styles';
-import { Product } from '@modules/Products/typings/products';
-import { useEffect, useState } from 'react';
 import { ActivityIndicator, FlatList } from 'react-native';
-import { useGetGamesQuery } from 'src/services/gamesApi';
 
 export function ProductList() {
-  const [page, setPage] = useState(0);
-
-  const [localProducts, setLocalProducts] = useState<Product[]>([]);
-
-  const { data: products = [], error, isLoading } = useGetGamesQuery(page);
-
-  useEffect(() => {
-    if (products && products.length) {
-      setLocalProducts((prevProducts) => [...prevProducts, ...products]);
-    }
-  }, [products]);
-
-  const loadMoreProducts = () => {
-    setPage((prevPage) => prevPage + 1);
-  };
+  const { products, error, isLoading, loadMoreProducts, page } = useProductList();
 
   if (isLoading && page === 0) {
     return <ActivityIndicator size="large" />;
@@ -38,7 +22,7 @@ export function ProductList() {
         <Header.Title>Ofertas do dia</Header.Title>
       </Header>
       <FlatList
-        data={localProducts}
+        data={products}
         keyExtractor={(item) => item.dealID}
         renderItem={({ item }) => <ProductItem product={item} />}
         onEndReached={loadMoreProducts}
