@@ -7,16 +7,13 @@ import {
 } from '@modules/Products/components/ProductItem/styles';
 import { Text } from '@components/Text';
 import { MaterialIcons } from '@expo/vector-icons';
-import {
-  addItemToCart,
-  removeItemFromCart,
-  selectIsInCart,
-} from '@modules/ShoppingCart/state/slices/cart.slice';
+import { addItemToCart, removeItemFromCart } from '@modules/ShoppingCart/state/slices/cart.slice';
 import { Product } from '@modules/Products/typings/products';
 import { showToast } from '@utils/showToast';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import theme from 'src/theme';
+import { selectIsInCart } from '@modules/ShoppingCart/state/selectors/cart.selectors';
 
 interface ProductItemProps {
   product: Product;

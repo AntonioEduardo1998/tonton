@@ -4,7 +4,10 @@ import { CartItem } from '@modules/ShoppingCart/components/CartItem/';
 import { ClearCartButton } from '@modules/ShoppingCart/components/ClearCartButton';
 import { EmptyCart } from '@modules/ShoppingCart/components/EmptyCart';
 import { Container, Footer } from '@modules/ShoppingCart/screens/ShoppingCartList/styles';
-import { selectCartHasItems, selectTotalCost } from '@modules/ShoppingCart/state/slices/cart.slice';
+import {
+  selectCartHasItems,
+  selectTotalCost,
+} from '@modules/ShoppingCart/state/selectors/cart.selectors';
 import { RootState } from '@store/store';
 import { FlatList } from 'react-native';
 import { useSelector } from 'react-redux';

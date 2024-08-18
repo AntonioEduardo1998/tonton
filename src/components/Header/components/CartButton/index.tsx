@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import {
   selectCartHasItems,
   selectTotalItemsInCart,
-} from '@modules/ShoppingCart/state/slices/cart.slice';
+} from '@modules/ShoppingCart/state/selectors/cart.selectors';
 
 export function CartButton({ onPress }: { onPress: () => void }) {
   const hasItemsInCart = useSelector(selectCartHasItems);

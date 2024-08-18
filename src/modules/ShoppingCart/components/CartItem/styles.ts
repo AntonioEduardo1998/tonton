@@ -28,6 +28,8 @@ export const ActionsView = styled.View`
 `;
 
 export const ProductTitle = styled.Text`
+  color: ${({ theme }) => theme.COLORS.WHITE};
+  font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
   max-width: 100%;
 `;
 
