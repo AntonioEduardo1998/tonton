@@ -1,5 +1,5 @@
 import Toast from 'react-native-toast-message';
-import theme from 'src/theme';
+import theme from '@theme/index';
 
 export function showToast(message: string) {
   Toast.show({

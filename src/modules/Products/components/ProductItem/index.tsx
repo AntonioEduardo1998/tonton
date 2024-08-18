@@ -12,7 +12,7 @@ import { selectIsInCart } from '@modules/ShoppingCart/state/selectors/cart.selec
 import React from 'react';
 import { View } from 'react-native';
 import { useSelector } from 'react-redux';
-import theme from 'src/theme';
+import theme from '@theme/index';
 
 interface ProductItemProps {
   product: Product;

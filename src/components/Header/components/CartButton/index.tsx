@@ -1,7 +1,7 @@
 import { Container, Badge } from '@components/Header/components/CartButton/styles';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Text } from '@components/Text';
-import theme from 'src/theme';
+import theme from '@theme/index';
 import { useSelector } from 'react-redux';
 import {
   selectCartHasItems,

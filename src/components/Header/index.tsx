@@ -2,7 +2,7 @@ import { CartButton } from '@components/Header/components/CartButton';
 import { BackButton, Container, Title } from '@components/Header/styles';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@hooks/useNavigation';
-import theme from 'src/theme';
+import theme from '@theme/index';
 
 type Props = {
   showBackButton?: boolean;

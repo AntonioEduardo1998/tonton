@@ -10,7 +10,7 @@ import {
 import { useCartItem } from '@modules/ShoppingCart/hooks/useCartItem';
 import { ShoppingCartItem } from '@modules/ShoppingCart/typings/shopping-cart';
 import { TouchableOpacity } from 'react-native';
-import theme from 'src/theme';
+import theme from '@theme/index';
 
 type CartItemProps = {
   product: ShoppingCartItem;

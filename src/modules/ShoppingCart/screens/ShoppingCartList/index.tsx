@@ -11,7 +11,7 @@ import {
 import { RootState } from '@store/store';
 import { FlatList } from 'react-native';
 import { useSelector } from 'react-redux';
-import theme from 'src/theme';
+import theme from '@theme/index';
 
 export function ShoppingCartList() {
   const cartItems = useSelector((state: RootState) => state.cart.items);

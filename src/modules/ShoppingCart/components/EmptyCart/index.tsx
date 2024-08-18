@@ -2,7 +2,7 @@ import { Text } from '@components/Text';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Container, KeepShoppingButton } from '@modules/ShoppingCart/components/EmptyCart/styles';
 import { useNavigation } from '@hooks/useNavigation';
-import theme from 'src/theme';
+import theme from '@theme/index';
 
 export function EmptyCart() {
   const { navigateToHome } = useNavigation();
