@@ -26,11 +26,7 @@ export function ShoppingCart() {
       <FlatList
         data={cartItems}
         keyExtractor={(item) => item.dealID}
-        renderItem={({ item }) => (
-          <Card>
-            <CartItemComponent game={item} />
-          </Card>
-        )}
+        renderItem={({ item }) => <CartItemComponent game={item} />}
       />
       <Footer>
         <Text color={theme.COLORS.PURPLE_900}>Total: R$ {totalCost.toFixed(2)}</Text>
