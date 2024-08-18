@@ -1,8 +1,7 @@
 import GameItem from '@components/GameItem';
-import { StyledFlatList } from '@components/GamesList/styles';
 import { Game } from '@typings/games';
 import { useEffect, useState } from 'react';
-import { ActivityIndicator, Text } from 'react-native';
+import { ActivityIndicator, FlatList, Text } from 'react-native';
 import { useGetGamesQuery } from 'src/services/games-api';
 
 export function GameList() {
@@ -31,13 +30,13 @@ export function GameList() {
   }
 
   return (
-    <StyledFlatList
+    <FlatList
       data={localGames}
       keyExtractor={(item) => item.dealID}
       renderItem={({ item }) => <GameItem game={item} />}
       onEndReached={loadMoreGames}
       onEndReachedThreshold={0.5}
-      removeClippedSubviews={true}
+      numColumns={2}
       initialNumToRender={10}
       maxToRenderPerBatch={10}
     />
