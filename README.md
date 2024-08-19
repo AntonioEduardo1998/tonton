@@ -38,6 +38,7 @@ Este é um aplicativo mobile criado com [Expo](https://expo.dev/) e [React Nativ
    git clone https://github.com/AntonioEduardo1998/tonton
     ```
 2. Instale as dependências:
+   
     ```bash
     yarn install
 
@@ -46,6 +47,7 @@ Este é um aplicativo mobile criado com [Expo](https://expo.dev/) e [React Nativ
     npm install
     ```
 3. Inicie o aplicativo:
+   
     ```bash
     npm run android
     ```
@@ -55,6 +57,13 @@ Este é um aplicativo mobile criado com [Expo](https://expo.dev/) e [React Nativ
 Para executar os testes, utilize o comando:
 ```bash
 npm run test
+```
+
+## Lint
+
+Para executar o lint no código, utilize o comando:
+```bash
+npm run lint
 ```
 
 ## Estrutura de Pastas
