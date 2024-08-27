@@ -10,7 +10,12 @@ export function useProductList() {
 
   useEffect(() => {
     if (products.length) {
-      setLocalProducts((prevProducts) => [...prevProducts, ...products]);
+      setLocalProducts((prevProducts) => {
+        const productIds = new Set(prevProducts.map((p) => p.dealID));
+        const newProducts = products.filter((p: Product) => !productIds.has(p.dealID));
+
+        return [...prevProducts, ...newProducts];
+      });
     }
   }, [products]);
 

@@ -43,21 +43,44 @@ describe('useProductList', () => {
   });
 
   it('should not add duplicate products', () => {
-    (useGetGamesQuery as jest.Mock).mockReturnValue({
-      data: mockProducts,
+    const mockProductsPage1 = [
+      { dealID: '1', title: 'Product 1', salePrice: '59.99', thumb: 'game1.jpg' },
+      { dealID: '2', title: 'Product 2', salePrice: '49.99', thumb: 'game2.jpg' },
+    ];
+
+    const mockProductsPage2 = [
+      { dealID: '2', title: 'Product 2', salePrice: '49.99', thumb: 'game2.jpg' },
+      { dealID: '3', title: 'Product 3', salePrice: '39.99', thumb: 'game3.jpg' },
+    ];
+
+    (useGetGamesQuery as jest.Mock).mockReturnValueOnce({
+      data: mockProductsPage1,
       error: null,
       isLoading: false,
     });
 
     const { result, rerender } = renderHook(() => useProductList());
 
-    rerender();
+    expect(result.current.products).toEqual(mockProductsPage1);
 
-    expect(result.current.products).toEqual(mockProducts);
+    (useGetGamesQuery as jest.Mock).mockReturnValueOnce({
+      data: mockProductsPage2,
+      error: null,
+      isLoading: false,
+    });
 
-    rerender();
+    act(() => {
+      result.current.loadMoreProducts();
+      rerender();
+    });
 
-    expect(result.current.products).toEqual(mockProducts);
+    const expectedProducts = [
+      { dealID: '1', title: 'Product 1', salePrice: '59.99', thumb: 'game1.jpg' },
+      { dealID: '2', title: 'Product 2', salePrice: '49.99', thumb: 'game2.jpg' },
+      { dealID: '3', title: 'Product 3', salePrice: '39.99', thumb: 'game3.jpg' },
+    ];
+
+    expect(result.current.products).toEqual(expectedProducts);
   });
 
   it('should increment the page when loadMoreProducts is called', () => {
