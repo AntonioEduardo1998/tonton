@@ -15,7 +15,10 @@
     "prepare": "husky"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": "eslint --fix"
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "jest --bail --findRelatedTests"
+    ]
   },
   "dependencies": {
     "@expo-google-fonts/roboto": "^0.2.3",
