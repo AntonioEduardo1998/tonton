@@ -2,6 +2,7 @@ import { Product } from '@modules/Products/typings/products';
 import { useGetGamesQuery } from '@services/gamesApi';
 import { act, renderHook } from '@testing-library/react-hooks';
 import { useProductList } from './useProductList';
+import { buildProduct } from '@tests/stubs/product.stub';
 
 jest.mock('@services/gamesApi');
 
@@ -43,15 +44,13 @@ describe('useProductList', () => {
   });
 
   it('should not add duplicate products', () => {
-    const mockProductsPage1 = [
-      { dealID: '1', title: 'Product 1', salePrice: '59.99', thumb: 'game1.jpg' },
-      { dealID: '2', title: 'Product 2', salePrice: '49.99', thumb: 'game2.jpg' },
-    ];
+    const product1 = buildProduct({ dealID: '1' });
+    const product2 = buildProduct({ dealID: '2' });
+    const product3 = buildProduct({ dealID: '3' });
 
-    const mockProductsPage2 = [
-      { dealID: '2', title: 'Product 2', salePrice: '49.99', thumb: 'game2.jpg' },
-      { dealID: '3', title: 'Product 3', salePrice: '39.99', thumb: 'game3.jpg' },
-    ];
+    const mockProductsPage1 = [product1, product2];
+
+    const mockProductsPage2 = [product2, product3];
 
     (useGetGamesQuery as jest.Mock).mockReturnValueOnce({
       data: mockProductsPage1,
@@ -74,13 +73,7 @@ describe('useProductList', () => {
       rerender();
     });
 
-    const expectedProducts = [
-      { dealID: '1', title: 'Product 1', salePrice: '59.99', thumb: 'game1.jpg' },
-      { dealID: '2', title: 'Product 2', salePrice: '49.99', thumb: 'game2.jpg' },
-      { dealID: '3', title: 'Product 3', salePrice: '39.99', thumb: 'game3.jpg' },
-    ];
-
-    expect(result.current.products).toEqual(expectedProducts);
+    expect(result.current.products).toEqual([product1, product2, product3]);
   });
 
   it('should increment the page when loadMoreProducts is called', () => {
