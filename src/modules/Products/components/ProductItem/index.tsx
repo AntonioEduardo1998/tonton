@@ -9,7 +9,7 @@ import {
 import { Product } from '@modules/Products/typings/products';
 import { useCart } from '@modules/ShoppingCart/hooks/useCart';
 import { selectIsInCart } from '@modules/ShoppingCart/state/selectors/cart.selectors';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { View } from 'react-native';
 import { useSelector } from 'react-redux';
 import theme from '@theme/index';
@@ -22,6 +22,14 @@ const ProductItem: React.FC<ProductItemProps> = React.memo(({ product }) => {
   const productIsInCart = useSelector(selectIsInCart(product.dealID));
   const { removeToCart, addToCart } = useCart();
 
+  const handlePress = useCallback(() => {
+    if (productIsInCart) {
+      removeToCart(product.dealID);
+    } else {
+      addToCart(product);
+    }
+  }, [addToCart, product, productIsInCart, removeToCart]);
+
   return (
     <Card>
       <ProductContent>
@@ -33,8 +41,7 @@ const ProductItem: React.FC<ProductItemProps> = React.memo(({ product }) => {
           <Text>R$ {product.salePrice}</Text>
         </View>
       </ProductContent>
-      <CartActionButton
-        onPress={() => (productIsInCart ? removeToCart(product.dealID) : addToCart(product))}>
+      <CartActionButton onPress={handlePress}>
         <MaterialIcons
           name={!productIsInCart ? 'add-shopping-cart' : 'remove-shopping-cart'}
           size={theme.FONT_SIZE.XL}

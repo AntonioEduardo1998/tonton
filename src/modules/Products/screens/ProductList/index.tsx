@@ -6,7 +6,7 @@ import { Container } from '@modules/Products/screens/ProductList/styles';
 import { ActivityIndicator, FlatList } from 'react-native';
 
 export function ProductList() {
-  const { products, error, isLoading, loadMoreProducts, page } = useProductList();
+  const { products, error, isLoading, isFetching, loadMoreProducts, page } = useProductList();
 
   if (isLoading && page === 0) {
     return <ActivityIndicator size="large" />;
@@ -28,8 +28,9 @@ export function ProductList() {
         onEndReached={loadMoreProducts}
         onEndReachedThreshold={0.5}
         numColumns={2}
+        ListFooterComponent={isFetching ? <ActivityIndicator size="large" /> : null}
         initialNumToRender={10}
-        maxToRenderPerBatch={10}
+        maxToRenderPerBatch={5}
       />
     </Container>
   );

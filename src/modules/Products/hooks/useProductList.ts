@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useGetGamesQuery } from '@services/gamesApi';
 import { Product } from '@modules/Products/typings/products';
 
@@ -6,7 +6,7 @@ export function useProductList() {
   const [page, setPage] = useState(0);
   const [localProducts, setLocalProducts] = useState<Product[]>([]);
 
-  const { data: products = [], error, isLoading } = useGetGamesQuery(page);
+  const { data: products = [], error, isLoading, isFetching } = useGetGamesQuery(page);
 
   useEffect(() => {
     if (products.length) {
@@ -19,16 +19,17 @@ export function useProductList() {
     }
   }, [products]);
 
-  const loadMoreProducts = () => {
+  const loadMoreProducts = useCallback(() => {
     if (!isLoading) {
       setPage((prevPage) => prevPage + 1);
     }
-  };
+  }, [isLoading]);
 
   return {
     products: localProducts,
     error,
     isLoading,
+    isFetching,
     loadMoreProducts,
     page,
   };
