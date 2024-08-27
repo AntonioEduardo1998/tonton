@@ -19,7 +19,7 @@ export const Title = styled.Text`
   color: ${({ theme }) => theme.COLORS.WHITE};
 `;
 
-export const BackButton = styled.TouchableOpacity`
+export const BackButton = styled.Pressable`
   border-radius: 8px;
   padding: 8px;
 `;

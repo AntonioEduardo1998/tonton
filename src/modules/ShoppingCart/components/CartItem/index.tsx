@@ -9,8 +9,8 @@ import {
 } from '@modules/ShoppingCart/components/CartItem/styles';
 import { useCartItem } from '@modules/ShoppingCart/hooks/useCartItem';
 import { ShoppingCartItem } from '@modules/ShoppingCart/typings/shopping-cart';
-import { TouchableOpacity } from 'react-native';
 import theme from '@theme/index';
+import { Pressable } from 'react-native';
 
 type CartItemProps = {
   product: ShoppingCartItem;
@@ -47,9 +47,9 @@ export function CartItem({ product }: CartItemProps) {
           />
         </ActionButton>
       </ActionsView>
-      <TouchableOpacity onPress={removeItem}>
+      <Pressable onPress={removeItem}>
         <MaterialIcons name="delete" size={theme.FONT_SIZE.XL} color={theme.COLORS.RED} />
-      </TouchableOpacity>
+      </Pressable>
     </Container>
   );
 }

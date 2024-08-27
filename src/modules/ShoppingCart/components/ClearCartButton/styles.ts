@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.TouchableOpacity`
+export const Container = styled.Pressable`
   border-radius: 8px;
   padding: 4px 8px;
   margin-left: auto;

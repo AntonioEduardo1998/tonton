@@ -6,7 +6,7 @@ export const Container = styled.View`
   align-items: center;
 `;
 
-export const KeepShoppingButton = styled.TouchableOpacity`
+export const KeepShoppingButton = styled.Pressable`
   padding: 8px 16px;
   background-color: ${({ theme }) => theme.COLORS.WHITE};
   border-radius: 8px;

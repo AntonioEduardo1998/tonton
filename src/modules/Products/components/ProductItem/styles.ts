@@ -11,7 +11,7 @@ export const ProductBanner = styled.Image`
   border-radius: 4px;
 `;
 
-export const CartActionButton = styled.TouchableOpacity`
+export const CartActionButton = styled.Pressable`
   background-color: ${({ theme }) => theme.COLORS.PURPLE_500};
   padding: 8px 16px;
   flex-direction: row;

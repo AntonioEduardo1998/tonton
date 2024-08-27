@@ -1,7 +1,7 @@
-import { TouchableOpacityProps } from 'react-native';
+import { PressableProps } from 'react-native';
 import styled from 'styled-components/native';
 
-interface ButtonProps extends TouchableOpacityProps {
+interface ButtonProps extends PressableProps {
   disabled?: boolean;
 }
 
@@ -33,7 +33,7 @@ export const ProductTitle = styled.Text`
   max-width: 100%;
 `;
 
-export const ActionButton = styled.TouchableOpacity<ButtonProps>`
+export const ActionButton = styled.Pressable<ButtonProps>`
   padding: 8px;
   opacity: ${(props) => (props.disabled ? 0.3 : 1)};
 `;
